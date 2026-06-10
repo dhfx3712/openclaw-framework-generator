@@ -1,11 +1,23 @@
 {
-  "project_name": "{{项目名}}",
-  "description": "{{业务描述}}",
-  "version": "1.0.0",
-  "interaction": "openclaw_first",
-  "delete_type": "soft",
-  "node_mark": "manual",
-  "features": {},
-  "storage": {},
-  "schedule": {}
+  "project": {
+    "name": "{{项目名}}",
+    "description": "{{业务描述}}",
+    "version": "1.0.0",
+    "architecture_pattern": "{{架构模式}}",
+    "script_mode": "{{执行模式}}"
+  },
+  "storage": {
+    "type": "{{数据底座}}",
+    "config": {}
+  },
+  "schedule": {
+    "cron_jobs": []
+  },
+  "features": {
+    "soft_delete": true,
+    "auto_mark": false
+  },
+  "state_machine": {
+    "entities": []
+  }
 }

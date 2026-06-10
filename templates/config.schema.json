@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "{{项目名}} 配置校验规则",
+  "type": "object",
+  "required": ["project", "storage"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "description": "项目元信息（系统层）",
+      "required": ["name", "description", "version", "architecture_pattern"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "项目名称，英文小写，用 - 或 _ 连接",
+          "pattern": "^[a-z][a-z0-9_-]*$"
+        },
+        "description": {
+          "type": "string",
+          "description": "业务描述"
+        },
+        "version": {
+          "type": "string",
+          "description": "项目版本号",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "default": "1.0.0"
+        },
+        "architecture_pattern": {
+          "type": "string",
+          "description": "架构模式",
+          "enum": ["single-agent", "hub-and-spoke", "pipeline", "event-driven", "daemon-agent"],
+          "default": "single-agent"
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "description": "存储层配置",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "数据底座类型",
+          "enum": ["feishu", "local-json", "local-md", "database", "custom"]
+        },
+        "config": {
+          "type": "object",
+          "description": "存储配置详情（按 type 不同而不同）"
+        }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "description": "调度层配置",
+      "properties": {
+        "cron_jobs": {
+          "type": "array",
+          "description": "定时任务列表",
+          "items": {
+            "type": "object",
+            "required": ["name", "expr", "action"],
+            "properties": {
+              "name": { "type": "string" },
+              "expr": { "type": "string" },
+              "action": { "type": "string" },
+              "script": { "type": "string" },
+              "timeout": { "type": "integer", "minimum": 1, "default": 30 }
+            }
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "description": "业务功能开关",
+      "properties": {
+        "soft_delete": {
+          "type": "boolean",
+          "description": "是否启用软删除",
+          "default": true
+        },
+        "auto_mark": {
+          "type": "boolean",
+          "description": "是否自动标记状态",
+          "default": false
+        }
+      }
+    },
+    "state_machine": {
+      "type": "object",
+      "description": "状态层：实体生命周期定义",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "description": "实体列表",
+          "items": {
+            "type": "object",
+            "required": ["name", "states"],
+            "properties": {
+              "name": { "type": "string" },
+              "states": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "transitions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["from", "to", "trigger"],
+                  "properties": {
+                    "from": { "type": "string" },
+                    "to": { "type": "string" },
+                    "trigger": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -12,6 +12,7 @@
 - 交互方式：OpenClaw 指令优先，外部存储（表格/文件）为数据底座
 - 删除模式：默认软删除（标记作废）
 - 节点/状态：手动标记，预留自动交互扩展位
+- 架构模式：自动选择（4种模式之一）
 
 ### 目录固定规则
 1. `datas/`：全局配置、数据、日志、文档
@@ -20,14 +21,22 @@
 4. `scripts/`：exec 调用脚本（sh / python 等），初始为空
 
 ### 根目录固定文件
-AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md
+AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md、ARCHITECTURE.md
 
 ## 模板目录配置
 - 模板位置：`templates/`
 - 模板格式：Markdown / JSON，使用 `{{变量名}}` 占位符
-- 模板版本：V2.0（通用模板骨架）
+- 模板版本：V3.0（架构约束模板）
 
 ## 生成行为配置
 - 覆盖保护：禁止自动覆盖已有目录/文件
 - 日志输出：生成过程简要日志展示
 - 模板渲染：按需替换占位符，未匹配占位符保留原样
+- 架构模式：自动选择，用户可通过自定义规则覆盖
+
+## 架构模式选择规则（自动判断）
+- 包含"管理""系统""调度""子Agent"等关键词 → hub-and-spoke
+- 包含"管道""流水线""处理链""多阶段"等关键词 → pipeline
+- 包含"监控""告警""事件""响应""触发"等关键词 → event-driven
+- 包含"查询""查词""翻译""引擎""高频""搜索"等关键词 → daemon-agent
+- 其余情况 → single-agent

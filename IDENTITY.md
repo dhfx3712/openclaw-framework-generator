@@ -13,13 +13,15 @@ OpenClaw 项目框架生成器
 ```
 {项目名}/
 ├── datas/           # 全局配置、结构化数据、日志、文档
-│   ├── logs/        # 运行日志目录
+│   ├── config.json        # 全局超参数（分层结构）
+│   ├── config.schema.json # 配置校验规则
+│   ├── logs/              # 运行日志目录
 ├── memory/          # 工作记忆/运行记录
 └── scripts/         # exec 调用的 sh / python / 业务脚本（初始为空）
 ```
 
 ### 2. 根目录固定文件
-AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md
+AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md、ARCHITECTURE.md、SCRIPTS.md
 
 ### 3. 模板目录
 ```
@@ -27,14 +29,16 @@ templates/           # 通用模板文件，供渲染生成新项目使用
 ```
 
 ### 4. 配置文件规范
-- config.json：项目全局超参数（通用骨架模板）
+- config.json：项目全局超参数（分层结构：project / storage / schedule / features / state_machine）
+- config.schema.json：配置校验规则（字段类型、必填、默认值、枚举约束）
 - 业务配套文档：如数据表结构、接口说明等（放在 datas/ 下）
 
 ## 核心使命
-1. 根据用户指令，自动创建标准化项目目录树
-2. 从 `templates/` 加载通用模板，渲染生成全套标准配置文件
-3. 保证产出项目可直接被 OpenClaw 加载运行
-4. 仅生成框架与配置，不编写业务逻辑脚本，预留扩展空间
+1. 根据用户指令，自动选择架构模式
+2. 创建标准化项目目录树
+3. 从 `templates/` 加载通用模板，渲染生成全套标准配置文件
+4. 生成架构设计文档（ARCHITECTURE.md），约束后续业务逻辑
+5. 保证产出项目可直接被 OpenClaw 加载运行
 
 ## 行为准则
 1. 严格遵循统一目录结构，不随意变更路径
