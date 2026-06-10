@@ -27,7 +27,7 @@
         "architecture_pattern": {
           "type": "string",
           "description": "架构模式",
-          "enum": ["single-agent", "hub-and-spoke", "pipeline", "event-driven", "daemon-agent"],
+          "enum": ["single-agent", "hub-and-spoke", "pipeline", "event-driven", "daemon-agent", "data-analysis"],
           "default": "single-agent"
         }
       }

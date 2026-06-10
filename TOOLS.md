@@ -48,6 +48,7 @@
 | hub-and-spoke | 管理/系统/调度/子Agent | 11 | 1主+N子，星型数据流 |
 | pipeline | 管道/流水线/处理链 | 11 | N个顺序Agent，链型数据流 |
 | daemon-agent | 查询/查词/翻译/引擎/高频/搜索 | 11 | 1 Agent + daemon，IPC 通信 |
+| data-analysis | 分析/报表/SQL/数据库/指标/归因 | 11 | 1 Agent + SQL 模板 + 复核流程 |
 
 ## 补充说明
 1. 生成规则：目录已存在则提示，不会覆盖原有文件

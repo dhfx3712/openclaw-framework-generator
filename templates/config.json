@@ -4,7 +4,9 @@
     "description": "{{业务描述}}",
     "version": "1.0.0",
     "architecture_pattern": "{{架构模式}}",
-    "script_mode": "{{执行模式}}"
+    "script_mode": "{{执行模式}}",
+    "multi_user": {{多用户模式}},
+    "has_review_flow": {{复核流程}}
   },
   "storage": {
     "type": "{{数据底座}}",

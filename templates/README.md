@@ -6,6 +6,9 @@
 
 ```
 {{项目名}}/
+├── agents/             # Agent 配置目录
+│   ├── main-agent/     # 主Agent 身份+技能
+│   └── ...             # 子Agent 身份+技能（hub-and-spoke 模式）
 ├── datas/              # 共享数据目录
 │   ├── config.json     # 全局超参数
 │   ├── logs/           # 运行日志
@@ -13,10 +16,12 @@
 ├── memory/             # 工作记忆/运行记录
 ├── scripts/            # 业务脚本（sh / python / exec）
 ├── AGENTS.md           # Agent 架构
+├── ARCHITECTURE.md     # 架构设计文档
 ├── BOOTSTRAP.md        # 启动引导
 ├── HEARTBEAT.md        # 心跳任务
 ├── IDENTITY.md         # Agent 身份
 ├── README.md           # 本文件
+├── SCRIPTS.md          # 脚本架构
 ├── SOUL.md             # 项目理念
 ├── TOOLS.md            # 指令工具清单
 └── USER.md             # 用户配置

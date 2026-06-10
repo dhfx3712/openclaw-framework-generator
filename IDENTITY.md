@@ -12,6 +12,9 @@ OpenClaw 项目框架生成器
 ### 1. 目录规范
 ```
 {项目名}/
+├── agents/          # Agent 配置目录
+│   ├── main-agent/  # 主Agent 身份+技能
+│   └── {子Agent}/   # 子Agent 身份+技能（hub-and-spoke 模式）
 ├── datas/           # 全局配置、结构化数据、日志、文档
 │   ├── config.json        # 全局超参数（分层结构）
 │   ├── config.schema.json # 配置校验规则
@@ -25,7 +28,8 @@ AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.m
 
 ### 3. 模板目录
 ```
-templates/           # 通用模板文件，供渲染生成新项目使用
+templates/                # 通用模板文件，供渲染生成新项目使用
+└── supplements/          # 架构模式补充清单（6种模式各一份）
 ```
 
 ### 4. 配置文件规范

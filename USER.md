@@ -15,10 +15,11 @@
 - 架构模式：自动选择（4种模式之一）
 
 ### 目录固定规则
-1. `datas/`：全局配置、数据、日志、文档
-2. `datas/logs/`：运行日志
-3. `memory/`：工作记忆/运行记录
-4. `scripts/`：exec 调用脚本（sh / python 等），初始为空
+1. `agents/`：Agent 配置目录（主Agent + 子Agent）
+2. `datas/`：全局配置、数据、日志、文档
+3. `datas/logs/`：运行日志
+4. `memory/`：工作记忆/运行记录
+5. `scripts/`：exec 调用脚本（sh / python 等），初始为空
 
 ### 根目录固定文件
 AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md、ARCHITECTURE.md
@@ -39,4 +40,5 @@ AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.m
 - 包含"管道""流水线""处理链""多阶段"等关键词 → pipeline
 - 包含"监控""告警""事件""响应""触发"等关键词 → event-driven
 - 包含"查询""查词""翻译""引擎""高频""搜索"等关键词 → daemon-agent
+- 包含"分析""报表""SQL""数据库""数据看板""指标""归因"等关键词 → data-analysis
 - 其余情况 → single-agent

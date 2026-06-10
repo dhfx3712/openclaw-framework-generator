@@ -52,6 +52,21 @@ scripts/
 3. **AI 介入点**：脚本无法完成的部分（如生成内容、智能判断）由 AI 处理
 4. **结果合并**：并行结果全部返回后，由 AI 统一组装
 
+### 复杂业务编排（flow/skill 分层）
+
+> 当业务逻辑复杂，AI 直接调用脚本不可靠时，建议采用 flow/skill 分层架构。
+> 详细说明见 `ARCHITECTURE.md` 第7节「复杂业务架构参考」。
+
+**核心思路：** AI 只做意图识别 + 参数提取，通过 `run_flow.py` 桥接脚本将确定性逻辑交给 Python 代码执行。
+
+```
+AI 层（SOUL.md 路由表）
+  ↓ exec run_flow.py <flow_name> '<slots>' '<ctx>'
+桥接层（run_flow.py）
+  ↓
+流程层（flow/）→ 技能层（skill/）→ 公共层（common/）→ 数据层
+```
+
 ---
 
 ## 输出格式规范
