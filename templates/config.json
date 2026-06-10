@@ -1,0 +1,11 @@
+{
+  "project_name": "{{项目名}}",
+  "description": "{{业务描述}}",
+  "version": "1.0.0",
+  "interaction": "openclaw_first",
+  "delete_type": "soft",
+  "node_mark": "manual",
+  "features": {},
+  "storage": {},
+  "schedule": {}
+}
