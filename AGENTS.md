@@ -52,6 +52,14 @@
 
 ## 内置能力（Skill，无独立子Agent）
 
+### 能力0：Skill 模板目录
+框架生成器自带 3 个通用 Skill 模板，可在创建项目时按需引入：
+- `templates/skills/feishu-bitable-skill/` — 飞书多维表格通用 CRUD（槽位驱动）
+- `templates/skills/notification-channel-skill/` — 多通道通知（webchat + 飞书群）
+- `templates/skills/memory-system-skill/` — 通用三层记忆系统（永久知识库 + 会话日志 + 实体注册表）
+
+创建项目时通过自定义规则 `引入技能:feishu-bitable,notification-channel` 自动复制到目标项目。
+
 ### 能力1：目录创建 Skill
 职责：按照标准规范递归创建目录树
 标准目录：
@@ -70,6 +78,7 @@
 - `single-agent` 模式：创建 `agents/main-agent/`
 - `hub-and-spoke` 模式：创建 `agents/main-agent/` + `agents/{子Agent名}/`
 - 其余模式：创建 `agents/main-agent/`
+- **所有模式统一创建** `memory/` 目录（MEMORY.md + README.md + entities/）
 
 ### 能力2：架构模式选择 Skill
 职责：根据业务描述自动选择架构模式，设置对应模板变量
@@ -103,6 +112,8 @@
 | **agents/main-agent/skill.yaml** | templates/agents/main-agent/skill.yaml | **主Agent 技能** |
 | **agents/{子Agent}/IDENTITY.md** | templates/agents/sub-agent/IDENTITY.md | **子Agent 身份（hub-and-spoke 模式）** |
 | **agents/{子Agent}/skill.yaml** | templates/agents/sub-agent/skill.yaml | **子Agent 技能（hub-and-spoke 模式）** |
+| **memory/MEMORY.md** | templates/memory/MEMORY.md | **永久知识库（默认生成）** |
+| **memory/README.md** | templates/memory/README.md | **记忆系统使用说明（默认生成）** |
 | datas/config.json | templates/config.json | 全局超参数（分层结构） |
 | datas/config.schema.json | templates/config.schema.json | **配置校验规则（新增）** |
 
@@ -127,4 +138,32 @@ config.schema.json 提供字段校验规则。
 - 文件清单
 - 架构模式说明
 - **架构模式补充清单路径**（`supplements/{模式}.md`）
-�骤。
+
+### 能力6：记忆框架初始化 Skill
+职责：所有新项目默认生成三层记忆系统框架，无需用户额外指定。
+
+**生成内容：**
+```
+memory/
+├── MEMORY.md                  # Layer 1: 永久知识库（预填分类模板）
+├── README.md                  # 记忆系统使用说明
+└── entities/                  # Layer 3: 实体注册表目录
+    ├── users/
+    ├── projects/
+    ├── tools/
+    └── concepts/
+```
+
+**模板来源：** `templates/memory/` 目录
+- `templates/memory/MEMORY.md` — 永久知识库模板（含 `{{项目名}}` `{{架构模式}}` `{{数据底座}}` 占位符）
+- `templates/memory/README.md` — 记忆系统使用说明（三层架构说明 + 使用规则）
+
+**生成规则：**
+1. 创建项目时自动创建 `memory/` 目录及所有子目录
+2. 渲染 `templates/memory/MEMORY.md` → `memory/MEMORY.md`
+3. 复制 `templates/memory/README.md` → `memory/README.md`
+4. 首次会话日志 `memory/YYYY-MM-DD.md` 由 AI 在首次交互后自动创建
+5. 实体注册表目录预创建，文件在首次提到实体时自动生成
+
+**目录创建规则更新：**
+所有架构模式统一创建 `memory/` 目录结构（不再只是空目录）。

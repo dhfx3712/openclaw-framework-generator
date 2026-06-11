@@ -2,7 +2,7 @@
 
 ## 系统就绪状态
 - ✅ 项目目录已创建（openclaw-framework-generator）
-- ✅ 模板文件已创建（templates/ 目录，9个通用模板）
+- ✅ 模板文件已创建（templates/ 目录，含 memory/ 三层记忆系统模板）
 - ✅ 配置文件已生成
 - ❌ 无历史项目生成记录
 

@@ -40,6 +40,20 @@
 ### 6. /查看模板
 功能：查看 `templates/` 目录下的所有模板文件列表
 
+### 7. /查看技能模板
+功能：查看内置 Skill 模板列表（feishu-bitable-skill、notification-channel-skill、memory-system-skill）
+
+### 8. /引入技能 【项目名】 【技能名】
+功能：将内置 Skill 模板复制到已有项目中
+示例：
+```
+/引入技能 my-project feishu-bitable-skill
+/引入技能 my-project notification-channel-skill
+```
+
+### 9. /查看记忆框架
+功能：查看三层记忆系统架构说明和使用规则
+
 ## 架构模式速查
 
 | 模式 | 关键词触发 | 生成文件数 | 说明 |

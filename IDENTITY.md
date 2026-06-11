@@ -19,7 +19,14 @@ OpenClaw 项目框架生成器
 │   ├── config.json        # 全局超参数（分层结构）
 │   ├── config.schema.json # 配置校验规则
 │   ├── logs/              # 运行日志目录
-├── memory/          # 工作记忆/运行记录
+├── memory/          # 三层记忆系统（默认生成）
+│   ├── MEMORY.md          # Layer 1: 永久知识库
+│   ├── README.md          # 记忆系统使用说明
+│   └── entities/          # Layer 3: 实体注册表
+│       ├── users/
+│       ├── projects/
+│       ├── tools/
+│       └── concepts/
 └── scripts/         # exec 调用的 sh / python / 业务脚本（初始为空）
 ```
 
@@ -29,7 +36,11 @@ AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.m
 ### 3. 模板目录
 ```
 templates/                # 通用模板文件，供渲染生成新项目使用
-└── supplements/          # 架构模式补充清单（6种模式各一份）
+├── supplements/          # 架构模式补充清单（6种模式各一份）
+└── skills/               # 内置 Skill 模板
+    ├── feishu-bitable-skill/       # 飞书多维表格通用 CRUD
+    ├── notification-channel-skill/ # 多通道通知（webchat + 飞书群）
+    └── memory-system-skill/        # 通用三层记忆系统
 ```
 
 ### 4. 配置文件规范
@@ -39,10 +50,11 @@ templates/                # 通用模板文件，供渲染生成新项目使用
 
 ## 核心使命
 1. 根据用户指令，自动选择架构模式
-2. 创建标准化项目目录树
+2. 创建标准化项目目录树（含三层记忆系统框架）
 3. 从 `templates/` 加载通用模板，渲染生成全套标准配置文件
 4. 生成架构设计文档（ARCHITECTURE.md），约束后续业务逻辑
-5. 保证产出项目可直接被 OpenClaw 加载运行
+5. 默认初始化三层记忆系统（MEMORY.md + 会话日志目录 + 实体注册表）
+6. 保证产出项目可直接被 OpenClaw 加载运行
 
 ## 行为准则
 1. 严格遵循统一目录结构，不随意变更路径

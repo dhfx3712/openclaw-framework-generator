@@ -13,7 +13,14 @@
 │   ├── config.json     # 全局超参数
 │   ├── logs/           # 运行日志
 │   └── ...             # 业务配套文档
-├── memory/             # 工作记忆/运行记录
+├── memory/             # 三层记忆系统
+│   ├── MEMORY.md       # Layer 1: 永久知识库
+│   ├── README.md       # 记忆系统使用说明
+│   └── entities/       # Layer 3: 实体注册表
+│       ├── users/
+│       ├── projects/
+│       ├── tools/
+│       └── concepts/
 ├── scripts/            # 业务脚本（sh / python / exec）
 ├── AGENTS.md           # Agent 架构
 ├── ARCHITECTURE.md     # 架构设计文档

@@ -18,16 +18,17 @@
 1. `agents/`：Agent 配置目录（主Agent + 子Agent）
 2. `datas/`：全局配置、数据、日志、文档
 3. `datas/logs/`：运行日志
-4. `memory/`：工作记忆/运行记录
-5. `scripts/`：exec 调用脚本（sh / python 等），初始为空
+4. `memory/`：三层记忆系统（默认生成 MEMORY.md + README.md + entities/）
+5. `memory/entities/`：实体注册表（users/ projects/ tools/ concepts/）
+6. `scripts/`：exec 调用脚本（sh / python 等），初始为空
 
 ### 根目录固定文件
 AGENTS.md、SOUL.md、TOOLS.md、USER.md、IDENTITY.md、README.md、BOOTSTRAP.md、HEARTBEAT.md、ARCHITECTURE.md
 
 ## 模板目录配置
 - 模板位置：`templates/`
-- 模板格式：Markdown / JSON，使用 `{{变量名}}` 占位符
-- 模板版本：V3.0（架构约束模板）
+- 模板格式：Markdown / JSON / YAML，使用 `{{变量名}}` 占位符
+- 模板版本：V4.0（默认集成三层记忆系统框架，新增 templates/memory/ 模板目录）
 
 ## 生成行为配置
 - 覆盖保护：禁止自动覆盖已有目录/文件
